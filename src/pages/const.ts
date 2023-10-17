@@ -1,4 +1,3 @@
 export const Setting = {
-  OfferCardsCount:  6
-
+  PlacesCount:  312
 };

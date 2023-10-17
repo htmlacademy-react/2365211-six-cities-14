@@ -1,10 +1,10 @@
 import OfferCard from '../../components/cards/cards';
 
 type MainPageProps={
-  offerCardsCount: number;
+  PlacesCount: number;
 }
 
-export default function MainPage({offerCardsCount}: MainPageProps): JSX.Element {
+export default function MainPage({PlacesCount}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -87,7 +87,7 @@ export default function MainPage({offerCardsCount}: MainPageProps): JSX.Element 
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">{PlacesCount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -115,8 +115,12 @@ export default function MainPage({offerCardsCount}: MainPageProps): JSX.Element 
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: offerCardsCount}, (_item, index: number) => <OfferCard key={index}/>)}
-
+                <OfferCard />
+                <OfferCard />
+                <OfferCard />
+                <OfferCard />
+                <OfferCard />
+                <OfferCard />
               </div>
             </section>
             <div className="cities__right-section">
