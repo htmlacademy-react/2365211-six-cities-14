@@ -115,12 +115,9 @@ export default function MainPage({PlacesCount}: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferCard />
-                <OfferCard />
-                <OfferCard />
-                <OfferCard />
-                <OfferCard />
-                <OfferCard />
+                {
+                  [1,2,3,4,5,6].map((item) => (<OfferCard key={item}/>))
+                }
               </div>
             </section>
             <div className="cities__right-section">
