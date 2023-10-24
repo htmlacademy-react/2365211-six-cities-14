@@ -1,7 +1,12 @@
+import {Helmet} from 'react-helmet-async';
 import Header from '../../components/header/header';
 export default function OfferPage(): JSX.Element{
   return (
     <div className="page">
+      <Helmet>
+        <title>6 cities - Offer</title>
+
+      </Helmet>
       <Header/>
       <main className="page__main page__main--offer">
         <section className="offer">

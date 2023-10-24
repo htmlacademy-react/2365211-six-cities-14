@@ -1,22 +1,19 @@
 import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet-async';
+import styles from './page-not-found.css';
 
-function NotFoundPage(): JSX.Element {
+export default function NotFoundPage(): JSX.Element {
   return (
-    <section >
+
+    <div className={`page ${styles.notfound}`}>
       <Helmet>
-        <title>Страница не найдена</title>
+        <title>{'6 cities - Not Found'}</title>
       </Helmet>
-
-      <header/>
-
-      <section>
-
-        <h1 >404. Page not found</h1>
-        <Link to="/">Вернуться на главную</Link>
-      </section>
-    </section>
+      <h1 className={styles.title}>404 NOT FOUND</h1>
+      <h3 className={styles.link}>
+        <Link to={'./'}>Go to main page</Link>
+      </h3>
+    </div >
   );
 }
 
-export default NotFoundPage;
