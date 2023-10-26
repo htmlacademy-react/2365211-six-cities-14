@@ -1,7 +1,7 @@
 .notfound {
   display: flex;
   width: auto;
-  height: 140vh;
+  height: 50vh;
   justify-content: end;
   align-items: center;
   flex-direction: column;
@@ -9,7 +9,7 @@
 
 .title {
   color: blue;
-  font-size: 5em;
+  font-size: 3em;
   text-align: center;
 }
 
