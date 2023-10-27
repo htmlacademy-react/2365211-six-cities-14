@@ -1,0 +1,19 @@
+.notfound {
+  display: flex;
+  width: auto;
+  height: 50vh;
+  justify-content: end;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  color: blue;
+  font-size: 3em;
+  text-align: center;
+}
+
+.link {
+    color:blueviolet;
+    text-align: center;
+}
