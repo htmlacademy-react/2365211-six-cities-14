@@ -1,4 +1,4 @@
-import Cards from '../cards/cards';
+import Card from '../cards/cards';
 
 import Offer from '../../types/offer';
 
@@ -13,7 +13,7 @@ function CardList({ elementType, offers }: OfferListProps) {
     <>
       {
         offers.map((offer) => (
-          <Cards elementType={elementType} offer={offer} key={offer.id} />
+          <Card elementType={elementType} offer={offer} key={offer.id} />
         ))
       }
     </>
