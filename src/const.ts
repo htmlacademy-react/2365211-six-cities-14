@@ -4,12 +4,12 @@ export const Setting = {
 
 export enum AppRoute {
 Login = '/login',
-Offers = '/offer',
-Favorites = '/favorites',
-Root = '/'
+Offer = '/offer',
+Favorite = '/favorites',
+Main = '/'
 }
 
-export enum AuthorizationStatus {
+export enum AuthStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
