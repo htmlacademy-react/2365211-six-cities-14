@@ -12,7 +12,7 @@ type FavoritePageProps = {
 
 function getFavoriteCities(favOffers: Array<Offer>): FavoritesByCity {
   const result = favOffers.reduce<FavoritesByCity>((acc, value) => {
-    const city = value.city.name;
+    const city:string = value.city.name;
     if (!(city in acc)) {
       acc[city] = [];
     }
