@@ -3,13 +3,14 @@ export const Setting = {
 };
 
 export enum AppRoute {
-Login = '/login',
-Offers = '/offer',
-Favorites = '/favorites',
-Root = '/'
+  Main = '/',
+  Login = '/login',
+  Favorite = '/favorites',
+  Offer = '/offer/',
+  NotFoundPage = '/*',
 }
 
-export enum AuthorizationStatus {
+export enum AuthStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',

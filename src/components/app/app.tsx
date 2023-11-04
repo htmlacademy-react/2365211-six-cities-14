@@ -8,60 +8,46 @@ import OfferPage from '../../pages/offer-page/offer-page';
 
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
+import Layout from '../../components/layout/layout';
+import ScrollToTop from '../scroll-to-top/scroll-to-top';
+import Offer from '../../types/offer';
 
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute, AuthStatus } from '../../const';
 
 type AppScreenProps = {
-  PlacesCount: number;
+  offersCount: number;
+  offers: Array<Offer>;
 };
 
-function App({PlacesCount}: AppScreenProps): JSX.Element {
+function App({offersCount, offers}: AppScreenProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop/>
         <Routes>
-          <Route
-            path={AppRoute.Root}
-            element = {<MainPage PlacesCount={PlacesCount}/>}
-          />
-          <Route
-            path={AppRoute.Login}
-            element = {
-              <PrivateRoute
-                restrictedFor={AuthorizationStatus.Auth}
-                redirectTo={AppRoute.Root}
-              >
-                <LoginPage/>
+          <Route path={'/'} element={<Layout />} >
+            <Route path={AppRoute.Main} element={<MainPage offersCount={offersCount} offers={offers} />} />
+            <Route path={AppRoute.Login} element={
+              <PrivateRoute restrictedFor={AuthStatus.Unknown} redirectTo={AppRoute.Main} >
+                <LoginPage />
               </PrivateRoute>
             }
-          />
-          <Route
-            path={AppRoute.Favorites}
-            element = {
-              <PrivateRoute
-                restrictedFor={AuthorizationStatus.NoAuth}
-                redirectTo={AppRoute.Login}
-              >
-                <FavoritePages/>
+            />
+
+            <Route path={AppRoute.Favorite} element={
+              <PrivateRoute restrictedFor={AuthStatus.Unknown} redirectTo={AppRoute.Login} >
+                <FavoritePages offers={offers} />
               </PrivateRoute>
             }
-          />
-
-          <Route path={AppRoute.Offers}>
-            <Route
-              index
-              element={<OfferPage />}
             />
+            <Route path={AppRoute.Offer}>
+              <Route index element={<OfferPage offers={offers}/>} />
+              <Route path={':offerId'} element={<OfferPage offers={offers} />} />
+            </Route>
 
-            <Route
-              path={':id'}
-              element={<OfferPage />}
-            />
+            <Route path={AppRoute.Offer} element={<OfferPage offers={offers}/>} />
+            <Route path='/*' element={<NotFoundPage/>} />
           </Route>
-
-          <Route path="*"
-            element={< NotFoundPage />}
-          />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
