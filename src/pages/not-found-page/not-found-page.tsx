@@ -1,6 +1,5 @@
 import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet-async';
-//import styles from './page-not-found.css';
 import './page-not-found.css';
 
 export default function NotFoundPage(): JSX.Element {

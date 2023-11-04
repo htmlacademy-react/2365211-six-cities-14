@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Navigate, useParams } from 'react-router-dom';
 
-//import { AppRoute } from '../../const';
+import { AppRoute } from '../../const';
 
 import OfferDetails from '../../components/offer-details/offer-details';
 
@@ -16,11 +16,10 @@ function OfferPage({offers}: OfferPageProps): JSX.Element {
   const selectedOffer = offers.find((it) => it.id === Number(offerId));
 
   if (!selectedOffer) {
-    return <Navigate to={'*'} />;
+    return <Navigate to={AppRoute.NotFoundPage} />;
   }
 
   return (
-
     <div className="page">
       <Helmet>
         <title>{'6 cities - offer'}</title>
