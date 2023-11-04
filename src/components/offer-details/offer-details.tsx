@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Offer from '../../types/types';
+import Offer from '../../types/offer';
 import ReviewForm from '../review-form/review-form';
 
 type OfferDetailsProps = {
