@@ -1,6 +1,5 @@
 import 'leaflet/dist/leaflet.css';
-import leaflet from 'leaflet';
-import { Marker, layerGroup } from 'leaflet';
+import L from 'leaflet';
 import { useRef, useEffect } from 'react';
 
 import useMap from '../../hooks/useMap';
@@ -15,13 +14,13 @@ type MapProps = {
   hoveredOfferId: Offer['id'] | null;
 }
 
-const defaultCustomIcon = leaflet.icon({
+const defaultCustomIcon = L.icon({
   iconUrl: URL_MARKER_DEFAULT,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
 
-const currentCustomIcon = leaflet.icon({
+const currentCustomIcon = L.icon({
   iconUrl: URL_MARKER_CURRENT,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
@@ -34,9 +33,9 @@ function Map({ city, offers, hoveredOfferId }: MapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
-      const markerLayer = layerGroup().addTo(map);
+      const markerLayer = L.layerGroup().addTo(map);
       offers.forEach((offer) => {
-        const marker = new Marker({
+        const marker = L.marker({
           lat: offer.location.latitude,
           lng: offer.location.longitude
         });
@@ -47,7 +46,8 @@ function Map({ city, offers, hoveredOfferId }: MapProps): JSX.Element {
               ? currentCustomIcon
               : defaultCustomIcon
           )
-          .addTo(markerLayer);
+          .addTo(markerLayer)
+          .bindPopup(`<h2>${offer.title}</h2><p style="font-size:1.5em">€${offer.price}</p>`);
 
       });
 
