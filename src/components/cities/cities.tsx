@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import CardList from '../card-list/card-list';
+import { city } from '../../mocks/city';
 
 import Offer from '../../types/offer';
 import Map from '../map/map';
@@ -7,7 +8,6 @@ import Map from '../map/map';
 type CitiesProps = {
   offers: Array<Offer>;
 }
-
 function Cities({offers}: CitiesProps): JSX.Element {
   const [hoveredOfferId, setHoveredOfferId] = useState<Offer['id'] | null>(null);
 
@@ -44,7 +44,7 @@ function Cities({offers}: CitiesProps): JSX.Element {
           </div>
         </section>
         <div className="cities__right-section">
-          <Map city={}/>
+          <Map city={city} offers={offers} hoveredOfferId={hoveredOfferId} />
         </div>
       </div>
     </div>
