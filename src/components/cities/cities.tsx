@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CardList from '../card-list/card-list';
-import { city } from '../../mocks/city';
+import { cities } from '../../mocks/city';
 
 import Offer from '../../types/offer';
 import Map from '../map/map';
@@ -44,7 +44,7 @@ function Cities({offers}: CitiesProps): JSX.Element {
           </div>
         </section>
         <div className="cities__right-section">
-          <Map city={city} offers={offers} hoveredOfferId={hoveredOfferId} />
+          <Map mapType={'cities'} cities={cities} offers={offers} hoveredOfferId={hoveredOfferId} />
         </div>
       </div>
     </div>

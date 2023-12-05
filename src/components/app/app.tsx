@@ -16,9 +16,10 @@ import { AppRoute, AuthStatus } from '../../const';
 
 type AppScreenProps = {
   offers: Array<Offer>;
+  upcomingOffers: Array<Offer>;
 };
 
-function App({offers}: AppScreenProps): JSX.Element {
+function App({offers, upcomingOffers}: AppScreenProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -40,12 +41,11 @@ function App({offers}: AppScreenProps): JSX.Element {
             }
             />
             <Route path={AppRoute.Offer}>
-              <Route index element={<OfferPage offers={offers}/>} />
-              <Route path={':offerId'} element={<OfferPage offers={offers} />} />
+              <Route index element={<OfferPage offers={offers} upcomingOffers={upcomingOffers}/>} />
+              <Route path={':offerId'} element={<OfferPage offers={offers} upcomingOffers={upcomingOffers}/>} />
             </Route>
 
-            <Route path={AppRoute.Offer} element={<OfferPage offers={offers}/>} />
-            <Route path='/*' element={<NotFoundPage/>} />
+            <Route path='AppRoute.NotFound' element={<NotFoundPage/>} />
           </Route>
         </Routes>
       </BrowserRouter>

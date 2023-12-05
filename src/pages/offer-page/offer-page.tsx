@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Navigate, useParams } from 'react-router-dom';
+import { cities } from '../../mocks/city';
+import Map from '../../components/map/map';
 
 import { AppRoute } from '../../const';
 
@@ -9,14 +11,15 @@ import Offer from '../../types/offer';
 
 type OfferPageProps = {
   offers: Array<Offer>;
+  upcomingOffers: Array<Offer>;
 };
 
-function OfferPage({offers}: OfferPageProps): JSX.Element {
+function OfferPage({offers, upcomingOffers}: OfferPageProps): JSX.Element {
   const {offerId} = useParams();
   const selectedOffer = offers.find((it) => it.id === Number(offerId));
 
   if (!selectedOffer) {
-    return <Navigate to={AppRoute.NotFoundPage} />;
+    return <Navigate to={AppRoute.NotFound} />;
   }
 
   return (
@@ -27,7 +30,7 @@ function OfferPage({offers}: OfferPageProps): JSX.Element {
       <main className="page__main page__main--offer">
         <section className="offer">
           <OfferDetails selectedOffer={selectedOffer}/>
-          <section className="offer__map map"></section>
+          <Map mapType={ 'offer' } cities= { cities } offers = { upcomingOffers } />
         </section>
         <div className="container">
           <section className="near-places places">
