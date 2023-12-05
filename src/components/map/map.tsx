@@ -12,7 +12,7 @@ type MapProps = {
   mapType: 'cities' | 'offer';
   cities: Array<CityMap>;
   offers: Array<Offer>;
-  hoveredOfferId?: Offer['id'] | null;
+  hoveredOfferId: Offer['id'] | null;
 }
 
 const defaultCustomIcon = L.icon({
